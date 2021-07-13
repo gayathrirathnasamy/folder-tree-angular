@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let item of items">
+    <div (click)="onExpand(item)">{{item.name}}</div>
+    <ul *ngIf="item.children && item.expanded">
+      <app-tree [items]=item.children></app-tree>
+    </ul>
+  </li>
+</ul>
