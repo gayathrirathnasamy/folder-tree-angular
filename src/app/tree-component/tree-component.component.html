@@ -1,8 +1,14 @@
 <ul>
   <li *ngFor="let item of items">
-    <div (click)="onExpand(item)">{{item.name}}</div>
+    <div (click)="onExpand(item)">
+      <i
+        class="fa fa-xs"
+        [ngClass]="{'fa-folder folder': (item.children && item.children.length>0), 'fa-file file': (item.children && item.children.length===0)}"
+      ></i
+      >{{item.name}}
+    </div>
     <ul *ngIf="item.children && item.expanded">
-      <app-tree [items]=item.children></app-tree>
+      <app-tree [items]="item.children"></app-tree>
     </ul>
   </li>
 </ul>
